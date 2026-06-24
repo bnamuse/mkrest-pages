@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mk体育 · 日常中的运动质感</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.7;
+            background-color: #f5f3ef;
+            color: #1f1e1b;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(135deg, #1d1b18 0%, #2d2a25 100%);
+            color: #eae6df;
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, #f5f3ef);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 350;
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 span {
+            font-weight: 600;
+            color: #d8ad6b;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.75;
+            max-width: 600px;
+            margin: 0.8rem auto 0;
+            border-top: 1px solid rgba(255, 215, 140, 0.2);
+            padding-top: 1rem;
+        }
+
+        /* 内容容器 */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3rem;
+        }
+
+        /* 三段主体，卡片式自然分段 */
+        .card-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .card-section:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-section h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #e3ddd3;
+            display: inline-block;
+            color: #2c2a26;
+        }
+
+        .card-section p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .card-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #b4833a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #8f6527;
+            border-bottom-color: #b4833a;
+        }
+
+        /* 引用 / 小标签 */
+        .tag-line {
+            display: inline-block;
+            background: #ede9e2;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #4f4940;
+            margin-top: 0.3rem;
+        }
+
+        /* FAQ 摘要块 */
+        .faq-mini {
+            background: #f8f6f2;
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            margin-top: 2rem;
+            border-left: 4px solid #d8ad6b;
+        }
+
+        .faq-mini h3 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: #1f1e1b;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 450;
+            padding: 0.3rem 0;
+            color: #3b3630;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            color: #b4833a;
+        }
+
+        .faq-mini .answer {
+            padding: 0.3rem 0 0.5rem 0.8rem;
+            color: #4b453c;
+            font-size: 0.95rem;
+            border-left: 2px solid #ddd5ca;
+            margin-left: 0.3rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 页尾访问提示（纯文字，不加链接） */
+        .footer-note {
+            margin-top: 2.5rem;
+            padding: 1.8rem 0 0.8rem;
+            text-align: center;
+            border-top: 1px solid #d9d2c7;
+            font-size: 0.95rem;
+            color: #6b645a;
+        }
+
+        .footer-note .highlight {
+            color: #b4833a;
+            font-weight: 500;
+        }
+
+        .footer-note .small {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3rem 1.5rem 2.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 1.8rem 1rem;
+            }
+
+            .card-section {
+                padding: 1.5rem 1.2rem;
+                border-radius: 18px;
+            }
+
+            .card-section h2 {
+                font-size: 1.35rem;
+            }
+
+            .faq-mini {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图背景说明 -->
+<div class="hero">
+    <h1><span>mk</span>体育</h1>
+    <p class="sub">运动不是远方的事，它就在生活褶皱里 —— 一点节奏、一次伸展、一段专注。</p>
+</div>
+
+<div class="container">
+
+    <!-- 第一段：从关键词背景展开 —— 运动与日常的连接 -->
+    <div class="card-section">
+        <h2>在时间里，找回身体的节拍</h2>
+        <p>
+            每天被屏幕和椅子包围，身体容易沉默。<strong>mk体育</strong>想做的不是让你成为职业选手，而是让运动重新成为你生活里自然的一部分。无论是清晨十分钟的唤醒拉伸，还是傍晚楼下的一次慢跑，关键是那个“今天我来动一动”的念头。
+        </p>
+        <p>
+            很多朋友觉得运动需要仪式感，要整套装备、要专门场地。其实哪怕只是放下手机，做几个简单的开合跳，或者跟着一段视频活动肩颈，身体就会给出正向的回馈。这就是我们理解的 <a href="https://mkrest.com.cn">mk体育</a> —— 把运动拆解成可以随时发生的动作，而不是一个宏大但难以坚持的计划。
+        </p>
+        <span class="tag-line">🏃 微运动 · 轻启动</span>
+    </div>
+
+    <!-- 第二段：特点与场景 —— 自然融入真实生活 -->
+    <div class="card-section">
+        <h2>不费力，但持续</h2>
+        <p>
+            之前有位朋友说，他坚持最久的事就是“每天做五个俯卧撑”，后来慢慢变成十个、二十个。没有压力，反而更持久。<strong>mk体育</strong> 鼓励的就是这种“低门槛惯性”—— 不用咬牙坚持，而是让身体因为舒适而重复。或许你今天只是多走了五百步，或者比昨天多拉伸了一分钟，这都算数。
+        </p>
+        <p>
+            周末约朋友去公园扔扔飞盘，或者独自骑一段车，连上耳机听点喜欢的音乐。这些场景里没有竞技的压力，只有和大汗淋漓之后那个清爽的自己相处。运动质感，很多时候来源于这种“我选择，我享受”的放松状态。
+        </p>
+        <span class="tag-line">🎯 自然惯性 · 小步积累</span>
+    </div>
+
+    <!-- 第三段：从主题内容继续展开 —— 日常中的运动质感 -->
+    <div class="card-section">
+        <h2>质感，藏在重复里</h2>
+        <p>
+            运动的质感从来不是一次爆发，而是反复过程中对自己身体的熟悉。今天肩膀有点紧，明天大腿前侧酸酸的 —— 这些信号在提醒你哪里需要活动，哪里需要放松。认真对待这些信号，就是最好的运动策略。
+        </p>
+        <p>
+            我们相信每个人都能找到自己的运动节奏。有人喜欢安静地做瑜伽，有人喜欢打球时队友的呼喊，还有人只需要每天晚饭后走一走。这些选择没有高下之分，重要的是你参与其中。如果想了解更多日常运动灵感，不妨到 <a href="https://mkrest.com.cn">mk体育</a> 看看其他朋友是怎么把运动融进生活的。
+        </p>
+        <span class="tag-line">🌱 听见身体 · 自有节奏</span>
+    </div>
+
+    <!-- FAQ 摘要（简洁搭配） -->
+    <div class="faq-mini">
+        <h3>❓ 一些容易被问起的事</h3>
+        <details>
+            <summary>每天运动多久才够？</summary>
+            <div class="answer">没有固定答案。哪怕只有十分钟，只要动起来就比不动好。关键是先动，再谈时长。</div>
+        </details>
+        <details>
+            <summary>没有运动基础，从哪里开始？</summary>
+            <div class="answer">从最简单的开始：原地踏步、靠墙静蹲、猫牛式拉伸。等身体适应了再慢慢加动作或时间。</div>
+        </details>
+        <details>
+            <summary>怎样保持动力？</summary>
+            <div class="answer">找一件你不太排斥的事，把它变成习惯。降低期待，先做三天，再试试一周。正反馈会自己来。</div>
+        </details>
+    </div>
+
+    <!-- 页尾访问提示 —— 不包含链接，只做自然收束 -->
+    <div class="footer-note">
+        <p>让运动回到日常，不用等到“准备好了”那天。</p>
+        <p>如果你愿意，可以从今天的一个俯卧撑、一分钟平板支撑开始。</p>
+        <p><span class="highlight">mk体育</span> 陪你养成自己的节奏。</p>
+        <div class="small">不极致，但持续。不勉强，但向前。</div>
+    </div>
+
+</div>
+
+</body>
+</html>
