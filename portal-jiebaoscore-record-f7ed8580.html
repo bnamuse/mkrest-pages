@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捷报比分 · 赛事数据轻导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafbfc;
+            color: #1a1f2b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 28px;
+            width: 100%;
+        }
+
+        /* —— 极简顶部导航 —— */
+        .nav {
+            padding: 28px 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e9ecf0;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.4px;
+            color: #1f2939;
+        }
+
+        .nav-brand span {
+            color: #3478c2;
+            margin-right: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #3f4a5c;
+            text-decoration: none;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1a1f2b;
+            border-bottom-color: #3478c2;
+        }
+
+        /* —— 主介绍区 —— */
+        .hero {
+            padding: 72px 0 48px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #10151f;
+        }
+
+        .hero h1 i {
+            font-style: normal;
+            background: #ecf2fa;
+            padding: 0 8px;
+            border-radius: 4px;
+            color: #2563a6;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #3d4a5e;
+            max-width: 620px;
+            margin-bottom: 32px;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #eef3f9;
+            padding: 6px 14px;
+            border-radius: 32px;
+            font-size: 0.85rem;
+            color: #2660a3;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        /* —— 三个场景模块 —— */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 32px 0 48px;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 18px 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(0, 20, 40, 0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 20, 40, 0.07);
+        }
+
+        .scene-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            display: block;
+            color: #3478c2;
+        }
+
+        .scene-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #121a29;
+        }
+
+        .scene-card p {
+            font-size: 0.92rem;
+            color: #4d5a6f;
+            line-height: 1.5;
+        }
+
+        /* —— 常见说明 —— */
+        .faq-section {
+            margin: 24px 0 48px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e7ed;
+        }
+
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #121a29;
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1.02rem;
+            margin-bottom: 5px;
+            color: #1f2a3c;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #3f4c62;
+            width: 90%;
+        }
+
+        .faq-item .meta-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: #eef2f7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: #456283;
+            margin-top: 6px;
+        }
+
+        /* —— 链接融入句子 —— */
+        .inline-link-area {
+            background: #f4f7fb;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 20px 0 48px;
+            font-size: 1rem;
+            color: #1d293d;
+            line-height: 1.7;
+        }
+
+        .inline-link-area a {
+            color: #1f5f9e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            font-weight: 500;
+        }
+
+        .inline-link-area a:hover {
+            color: #0b3d6b;
+        }
+
+        /* —— 页脚 —— */
+        .footer {
+            margin-top: auto;
+            padding: 32px 0 28px;
+            font-size: 0.85rem;
+            color: #6f7c8e;
+            border-top: 1px solid #e4e9f0;
+            text-align: center;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                font-size: 0.9rem;
+            }
+
+            .nav {
+                padding-top: 20px;
+            }
+
+            .faq-item p {
+                width: 100%;
+            }
+
+            .inline-link-area {
+                padding: 18px 20px;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .container {
+                padding: 0 18px;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 10px;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <nav class="nav">
+            <div class="nav-brand"><span>◉</span> 数据导航</div>
+            <div class="nav-links">
+                <a href="#scenes">场景</a>
+                <a href="#faq">说明</a>
+                <a href="https://portal-jiebaoscore.com" style="font-weight:500;">捷报比分</a>
+            </div>
+        </nav>
+
+        <!-- 主介绍 -->
+        <section class="hero">
+            <div class="tagline">轻量 · 赛事数据入口</div>
+            <h1>从 <i>日常查询</i> 到对照延伸</h1>
+            <p>围绕比赛数据，整理出三种常见使用路径：即时查询、横向对照、历史回溯。不堆砌功能，只提供清晰的信息起点。</p>
+        </section>
+
+        <!-- 三个场景模块 -->
+        <div class="scene-grid" id="scenes">
+            <div class="scene-card">
+                <span class="icon">⚡</span>
+                <h3>即时比分 · 快速落位</h3>
+                <p>焦点赛事、实时进球、红黄牌变动，按联赛或时间线聚合，辅助你在几秒内掌握战况。</p>
+            </div>
+            <div class="scene-card">
+                <span class="icon">⇄</span>
+                <h3>对照面板 · 横向对比</h3>
+                <p>同轮多场同列展示，积分、主客、交锋数据并排呈现，便于横向观察走势与差异。</p>
+            </div>
+            <div class="scene-card">
+                <span class="icon">↻</span>
+                <h3>延伸阅读 · 背景索引</h3>
+                <p>赛季统计、近期状态、伤病概况，从一场比赛延伸到球队整体脉络，减少盲目切换。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 常见说明（摘要） -->
+        <section class="faq-section" id="faq">
+            <h2>常见说明</h2>
+            <div class="faq-item">
+                <strong>数据覆盖范围</strong>
+                <p>主要涵盖欧洲、亚洲及美洲主流联赛，杯赛与次级联赛选择性收录。数据更新存在自然延迟，以官方赛果为准。</p>
+                <span class="meta-tag">覆盖面</span>
+            </div>
+            <div class="faq-item">
+                <strong>对照功能的使用逻辑</strong>
+                <p>建议同时选择 2–4 场关联赛事，系统自动对齐时间轴与关键指标，方便横向阅读而非深度分析。</p>
+                <span class="meta-tag">提示</span>
+            </div>
+            <div class="faq-item">
+                <strong>延伸阅读的定位</strong>
+                <p>每场比赛关联最近 6–10 轮数据及交锋记录，不提供预测或算法结论，仅作为背景参考。</p>
+                <span class="meta-tag">边界</span>
+            </div>
+        </section>
+
+        <!-- 将链接自然嵌入句子 -->
+        <div class="inline-link-area">
+            <p>如果你经常需要快速核对比赛结果、对比球队近期状态，可以把 <a href="https://portal-jiebaoscore.com">捷报比分</a> 当作一个轻量起点。页面结构围绕查询和对照展开，没有复杂菜单，适合在赛前、中场或赛后几分钟内完成信息定位。</p>
+        </div>
+
+        <footer class="footer">
+            简洁数据导航 · 版本 2025
+        </footer>
+    </div>
+</body>
+</html>
